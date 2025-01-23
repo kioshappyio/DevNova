@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="id">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"  rel="stylesheet" />
+      <title>Lampu</title>
+  </head>
+  <body>
+    <div class="flex flex-wrap justify-center items-center min-h-screen w-full bg-gray-800 gap-4">
+      <!-- Lampu Kamar (2) -->
+      <div class="flex flex-col gap-2 items-center">
+        <img src="/asset/images/off.gif" alt="" id="lampu1" />
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" id="toggle1" class="sr-only peer" onchange="saklar()">
+          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+      <div class="flex flex-col gap-2 items-center">
+        <img src="/asset/images/off.gif" alt="" id="lampu2" />
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" id="toggle2" class="sr-only peer" onchange="saklar()">
+          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+
+      <!-- Lampu Ruang Tamu (4) -->
+      <div class="flex flex-col gap-2 items-center">
+        <img src="/asset/images/off.gif" alt="" id="lampu3" />
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" id="toggle3" class="sr-only peer" onchange="saklar()">
+          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+      <div class="flex flex-col gap-2 items-center">
+        <img src="/asset/images/off.gif" alt="" id="lampu4" />
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" id="toggle4" class="sr-only peer" onchange="saklar()">
+          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+      <div class="flex flex-col gap-2 items-center">
+        <img src="/asset/images/off.gif" alt="" id="lampu5" />
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" id="toggle5" class="sr-only peer" onchange="saklar()">
+          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+      <div class="flex flex-col gap-2 items-center">
+        <img src="/asset/images/off.gif" alt="" id="lampu6" />
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" id="toggle6" class="sr-only peer" onchange="saklar()">
+          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+        </label>
+      </div>
+
+      <!-- Tombol Grup Ruang Tamu -->
+      <div class="flex flex-col items-center gap-4">
+        <label class="font-bold text-white">Kontrol Grup Ruang Tamu:</label>
+        <button class="bg-blue-500 text-white py-2 px-4 rounded" onclick="saklarGrup('on', 'lampu3', 'lampu4', 'lampu5', 'lampu6')">Nyalakan Semua</button>
+        <button class="bg-red-500 text-white py-2 px-4 rounded" onclick="saklarGrup('off', 'lampu3', 'lampu4', 'lampu5', 'lampu6')">Matikan Semua</button>
+      </div>
+    </div>
+
+    <script src="saklar.js" type="application/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+  </body>
+</html>
