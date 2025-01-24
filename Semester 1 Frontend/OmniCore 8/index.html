@@ -10,6 +10,20 @@
   .container {
     max-width: 50%;
     margin: 0 auto;
+    position: relative;
+  }
+  
+  video {
+    display: block;
+    width: 100%;
+    border: 2px solid red;
+  }
+  
+  .video-component {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px 12px;
   }
   
   .btn {
@@ -46,7 +60,7 @@
   </head>
   <body>
     <div class="container">
-      <video controls>
+      <video width="720">
       <source src="./asset/video/bahan.mp4" type="video/mp4"/>
     </video>
     <div class="video-component">
@@ -58,14 +72,18 @@
     
     
     <script>
+    const videoComponent = document.querySelector('video')
       function play() {
         console.log('play')
+        videoComponent.play()
       }
       function pause() {
         console.log('pause')
+        videoComponent.pause()
       }
       function minimaze() {
         console.log('minimaze')
+        videoComponent.requestPictureInPicture()
       }
     </script>
   </body>
