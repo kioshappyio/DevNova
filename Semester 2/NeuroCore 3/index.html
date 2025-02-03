@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <link rel="stylesheet" href="style.css"/>
+    <title>Free Website</title>
+  </head>
+  <body>
+    <header class="animate__animated animate__backInDown">
+      <div class="logo">
+        <img src="/asset/partner.png" alt="logo" class="logo-img"/>
+        <h1 class="logo-title">KEY</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#jasa">JASA</a></li>
+          <li><a href="mailto:airohunter.io@gmail.com">KONTAK</a></li>
+        </ul>
+      </nav>
+      <button class="btn-cta" onclick="openInstagram()">Follow Me</button>
+    </header>
+    <div class="container">
+      <div class="intro">
+        <p class="title animate__animated animate__backInLeft">Hello, this key is here</p>
+        <p class="description animate__animated animate__backInRight">Best programmer in technology and informatics</p>
+        <img src="./asset/foto/profil.png" alt="foto this key" class="img-foto animate__animated animate__backInUp"/>
+      </div>
+    </div>
+    <div class="parallax">
+      <div class="content">
+        <p class="title animate__animated animate__fadeInTopLeft">Saya adalah programmer</p>
+        <p class="description animate__animated animate__fadeInTopRight">Ngoding aja dulu jagonya belakangan</p>
+        <button class="btn-cta mt-10" onclick="openWhatsapp()">MARI KERJASAMA</button>
+      </div>
+      <div class="container">
+        <div>
+          <div class="card animate__animated animate__fadeInBottomLeft" id="jasa">
+            <div class="card-item">
+              <img src="/asset/24-hours.png" alt="icon 1" class="icon"/>
+              <p class="card-title">Pelayanan Nonstop</p>
+              <p class="card-description">Service nonstop ketika anda membutuhkan bantuan
+              </p>
+              </div>
+              <div class="card-item">
+                <img src="/asset/hot-deal.png" alt="icon 2" class="icon"/>
+                <p class="card-title">Jasa Paling Murah</p>
+                <p class="card-description">Biaya jasa yang saya berikan murah dan terjamin</p>
+                </div>
+                <div class="card-item">
+                  <img src="/asset/rating.png" alt="icon 3" class="icon"/>
+                  <p class="card-title">789 Review</p>
+                  <p class="card-description">Mereka merasa sangat senang dengan bekerjasama bersama saya
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p class="title">&copy; this key website 2025</p>
+    </footer>
+    <script>
+    function openInstagram () {
+      window.location.href = "https://instagram.com/example"
+    }
+    function openWhatsapp () {
+      window.location.href = "https://wa.me/628888888888"
+    }
+    </script>
+  </body>
+</html>
