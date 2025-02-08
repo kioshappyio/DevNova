@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:description" content="Tambahkan Atau Cari Nama Favorit Kamu" />
+    <meta property="og:image" content="https://kioshappyio.github.io/nameN/nama.png" />
+    <meta property="og:url" content="https://namegenerator.trc-cloud.ct.ws" />
+    <meta property="og:type" content="website" />
+    <title>Website Nama Anak</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .loading-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-primary text-white py-3 mb-4">
+        <div class="container text-center">
+            <h1 class="fw-bold">Nama Anak</h1>
+            <p class="lead">Cari, Kombinasikan, dan Simpan Nama Favorit Anda</p>
+        </div>
+    </header>
+
+    <!-- Animasi Loading -->
+    <div id="loading" class="loading-container d-none">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- Form untuk Cari Nama -->
+        <section class="mb-5">
+            <div class="card shadow p-4">
+                <h2 class="text-center mb-4">Cari Nama</h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="category" class="form-label">Kategori</label>
+                        <select id="category" class="form-select">
+                            <option value="Sanskerta">Sanskerta</option>
+                            <option value="Islami">Islami</option>
+                            <option value="Modern">Modern</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="gender" class="form-label">Jenis Kelamin</label>
+                        <select id="gender" class="form-select">
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="nameFormat" class="form-label">Format Nama</label>
+                        <select id="nameFormat" class="form-select">
+                            <option value="first">Nama Awal</option>
+                            <option value="middle">Nama Awal dan Tengah</option>
+                            <option value="full">Nama Lengkap</option>
+                        </select>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button id="search" class="btn btn-success w-100 fw-bold">
+                            <i class="fas fa-search"></i> Cari Nama
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form untuk Tambah Nama -->
+        <section id="add-name" class="mb-5">
+            <h2 class="text-center mb-4">Tambah Nama Baru</h2>
+            <div class="card shadow p-4">
+                <form id="addNameForm">
+                    <div class="mb-3">
+                        <label for="newName" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="newName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newCategory" class="form-label">Kategori</label>
+                        <select class="form-select" id="newCategory" required>
+                            <option value="Sanskerta">Sanskerta</option>
+                            <option value="Islami">Islami</option>
+                            <option value="Modern">Modern</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newGender" class="form-label">Jenis Kelamin</label>
+                        <select class="form-select" id="newGender" required>
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newNameFormat" class="form-label">Format Nama</label>
+                        <select class="form-select" id="newNameFormat" required>
+                            <option value="first">Nama Awal</option>
+                            <option value="middle">Nama Awal dan Tengah</option>
+                            <option value="full">Nama Lengkap</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Tambah Nama</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Hasil Pencarian -->
+        <section id="results" class="mb-5">
+            <h2 class="text-center mb-4">Hasil Pencarian</h2>
+            <div class="row" id="results-list">
+                <!-- Hasil nama akan ditampilkan di sini -->
+            </div>
+        </section>
+
+        <!-- Nama Favorit -->
+        <section id="favorites">
+            <h2 class="text-center mb-4">Nama Favorit</h2>
+            <ul class="list-group" id="favorites-list">
+                <!-- Nama favorit akan ditampilkan di sini -->
+            </ul>
+        </section>
+    </main>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom JS -->
+    <script>
+        // Fungsi untuk menambahkan nama baru
+        document.getElementById('addNameForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const newName = document.getElementById('newName').value;
+            const newCategory = document.getElementById('newCategory').value;
+            const newGender = document.getElementById('newGender').value;
+            const newNameFormat = document.getElementById('newNameFormat').value;
+
+            // Menampilkan animasi loading
+            document.getElementById('loading').classList.remove('d-none');
+
+            const formData = new FormData();
+            formData.append('newName', newName);
+            formData.append('newCategory', newCategory);
+            formData.append('newGender', newGender);
+            formData.append('newNameFormat', newNameFormat);
+
+            fetch('add-name.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    // Menyembunyikan animasi loading dan menampilkan hasil
+                    document.getElementById('loading').classList.add('d-none');
+                    Swal.fire({
+                        title: 'Nama berhasil ditambahkan!',
+                        text: data,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                })
+                .catch(error => {
+                    document.getElementById('loading').classList.add('d-none');
+                    Swal.fire({
+                        title: 'Terjadi kesalahan',
+                        text: error.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                });
+        });
+// Fungsi untuk mencari nama
+        document.getElementById('search').addEventListener('click', function () {
+            const category = document.getElementById('category').value;
+            const gender = document.getElementById('gender').value;
+            const nameFormat = document.getElementById('nameFormat').value;
+
+            // Menampilkan animasi loading
+            document.getElementById('loading').classList.remove('d-none');
+
+            // Mengirim permintaan pencarian ke server
+            fetch(`search-names.php?category=${category}&gender=${gender}&nameFormat=${nameFormat}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Menyembunyikan animasi loading
+                    document.getElementById('loading').classList.add('d-none');
+
+                    // Mengosongkan daftar hasil sebelumnya
+                    const resultsList = document.getElementById('results-list');
+                    resultsList.innerHTML = '';
+
+                    // Menampilkan hasil pencarian
+                    data.names.forEach(name => {
+                        const nameItem = document.createElement('div');
+                        nameItem.classList.add('col-md-4');
+                        nameItem.classList.add('mb-4');
+                        nameItem.innerHTML = `
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">${name.name}</h5>
+                                    <p class="card-text">${name.meaning}</p>
+                                    <button class="btn btn-outline-primary" onclick="addToFavorites('${name.name}')">
+                                        <i class="fas fa-heart"></i> Tambah ke Favorit
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        resultsList.appendChild(nameItem);
+                    });
+                })
+                .catch(error => {
+                    document.getElementById('loading').classList.add('d-none');
+                    Swal.fire({
+                        title: 'Terjadi kesalahan',
+                        text: error.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                });
+        });
+
+        // Fungsi untuk menambahkan nama ke daftar favorit
+        function addToFavorites(name) {
+            const favoritesList = document.getElementById('favorites-list');
+
+            // Membuat elemen baru untuk nama favorit
+            const favoriteItem = document.createElement('li');
+            favoriteItem.classList.add('list-group-item');
+            favoriteItem.classList.add('d-flex');
+            favoriteItem.classList.add('justify-content-between');
+            favoriteItem.innerHTML = `
+                ${name}
+                <button class="btn btn-danger btn-sm" onclick="removeFromFavorites(this)">
+                    <i class="fas fa-trash"></i>
+                </button>
+            `;
+
+            // Menambahkan nama ke daftar favorit
+            favoritesList.appendChild(favoriteItem);
+
+            // Menyimpan nama favorit di local storage
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            favorites.push(name);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        // Fungsi untuk menghapus nama dari daftar favorit
+        function removeFromFavorites(button) {
+            const favoriteItem = button.closest('li');
+            const name = favoriteItem.firstChild.textContent.trim();
+            
+            // Menghapus nama dari daftar favorit di local storage
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            favorites = favorites.filter(favorite => favorite !== name);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+
+            // Menghapus elemen favorit dari UI
+            favoriteItem.remove();
+        }
+
+        // Menampilkan nama favorit dari local storage saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function () {
+            const favoritesList = document.getElementById('favorites-list');
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+            favorites.forEach(name => {
+                const favoriteItem = document.createElement('li');
+                favoriteItem.classList.add('list-group-item');
+                favoriteItem.classList.add('d-flex');
+                favoriteItem.classList.add('justify-content-between');
+                favoriteItem.innerHTML = `
+                    ${name}
+                    <button class="btn btn-danger btn-sm" onclick="removeFromFavorites(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                favoritesList.appendChild(favoriteItem);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ya gitulah"/>
+    <meta name="keywords" content="this key, programer, aku ganteng"/>
+    <meta name="author" content="THIS KEY"/>
+    <title>PARALLAX</title>
+  </head>
+  <style>
+  *, html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+    .parallax {
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      width: 100%;
+      height: 100vh;
+    }
+    
+    .intro {
+      background-image: url('/asset/foto/1.jpeg');
+    }
+    
+    .cta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .title {
+      text-align: center;
+      font-size: 2em;
+      letter-spacing: 20px;
+      font-family: fantasy;
+      color: white;
+    }
+    
+    .content {
+      background-image: url('/asset/foto/2.jpeg');
+    }
+    .footer {
+      background-image: url('/asset/foto/3.jpeg');
+    }
+    
+    .container {
+      height: 2%;
+      width: 100%
+      background-color: #1a2238;
+    }
+    
+    ul {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      background: red;
+      align-items: center;
+    }
+    
+    li {
+      list-style-type: none;
+    }
+    
+  </style>
+  <body>
+    <div class="parallax intro">
+      <div class="cta">
+        <div class="title">HELLO SAYA KEY</div>
+      </div>
+    </div>
+    <div class="parallax content"></div>
+    <div class="parallax footer"></div>
+  </body>
+</html>
