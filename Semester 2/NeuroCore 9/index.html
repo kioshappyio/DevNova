@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <style>
+    #result {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+    }
+    #activity {
+      font-size: 2em;
+      font-weight: 800;
+      text-align: center;
+    }
+    #type {
+      display: none;
+      background-color: crimson;
+      font-size: 24px;
+      font-weight: 600;
+      color: white;
+      padding: 8px 16px;
+    }
+  </style>
+    <title>Quote capture</title>
+  </head>
+  <body>
+    <ons-page>
+      <ons-toolbar>
+        <div class="center">QUOTE CAPTURE</div>
+        <div class="right">
+          <ons-toolbar-button>
+            <a download id="screenshoot">📷</a>
+          </ons-toolbar-button>
+        </div>
+      </ons-toolbar>
+      <ons-fab position="bottom right" onclick="generateIde()">
+        <ons-icon icon="md-plus"></ons-icon>
+      </ons-fab>
+      <div id="result">
+        <h1 id="activity"></h1>
+        <p id="type"></p>
+      </div>
+    </ons-page>
+    <script src="script.js"></script>
+  </body>
+</html>
